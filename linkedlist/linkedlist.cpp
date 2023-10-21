@@ -34,6 +34,9 @@ class Linkedlist {
     // Delete from beginning of the list
     void deleteFromBeginning();
 
+    // Delete from a specific position in the list
+    void deleteFromPos(int);
+
     // Printing the list
     void printList();
 
@@ -133,13 +136,47 @@ void Linkedlist::deleteFromEnd() {
 void Linkedlist::deleteFromBeginning() {
     Node* temp = head;
 
-    if(temp == NULL) {
+    if(head == NULL) {
         cout << "No node to delete" << endl;
     }
 
     temp = head;
-    head = head->next;
+    head = temp->next;
     delete temp;
+}
+
+// Delete node from the specific position from the list
+void Linkedlist::deleteFromPos(int  pos) {
+    Node* temp = head;
+    if(pos == 1) {
+        head = head->next;
+        delete temp;
+        return;
+    }
+
+    Node* prevNode = head;
+    Node* currNode = prevNode->next;
+    int counter = 2;
+    int countNode = 1;
+
+    while(temp->next != NULL) {
+        temp = temp->next;
+        countNode++;
+    }
+
+    if(head == NULL || pos < 1 || pos > countNode) {
+        cout << "Can't add at this position" << endl;
+        exit(0);
+    }
+
+    while(counter < pos) {
+        prevNode = prevNode->next;
+        currNode = prevNode->next;
+        counter++;
+    }
+
+    prevNode->next = currNode->next;
+    delete currNode;
 }
 
 // Printing the list
@@ -168,12 +205,14 @@ int main() {
 
     // LL.insertAtBeginning(14);
 
-    // LL.insertAtPos(15, 5);
+    LL.insertAtPos(15, 5);
     // LL.insertAtPos(23, 7);
 
     // LL.deleteNode();
 
-    LL.deleteFromBeginning();
+    // LL.deleteFromBeginning();
+
+    LL.deleteFromPos(1);
 
     LL.printList();
     return 0;
