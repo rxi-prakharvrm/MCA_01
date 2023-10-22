@@ -12,12 +12,12 @@ class Node {
     }
 };
 
-class Linkedlist {
+class SinglyLinkedList {
     Node* head;
 
     public:
 
-    Linkedlist() { head = NULL; }
+    SinglyLinkedList() { head = NULL; }
 
     // Inserting node at the end of the list
     void insertAtEnd(int);
@@ -44,7 +44,7 @@ class Linkedlist {
 
 };
 
-void Linkedlist::insertAtEnd(int data) {
+void SinglyLinkedList::insertAtEnd(int data) {
     // Create a Node
     Node* newNode = new Node(data);
 
@@ -66,7 +66,7 @@ void Linkedlist::insertAtEnd(int data) {
 }
 
 // Inserting the node at the beginning of the list
-void Linkedlist::insertAtBeginning(int data) {
+void SinglyLinkedList::insertAtBeginning(int data) {
     Node* newNode = new Node(data);
 
     if(head == NULL) {
@@ -79,7 +79,7 @@ void Linkedlist::insertAtBeginning(int data) {
 }
 
 // Inserting the node at the specific position
-void Linkedlist::insertAtPos(int data, int pos) {
+void SinglyLinkedList::insertAtPos(int data, int pos) {
     Node* newNode = new Node(data);
     Node* temp = head;
     Node* prev = NULL;
@@ -119,7 +119,7 @@ void Linkedlist::insertAtPos(int data, int pos) {
 }
 
 // Function to delete the node at the end of the list
-void Linkedlist::deleteFromEnd() {
+void SinglyLinkedList::deleteFromEnd() {
     Node* temp = head;
 
     while(temp->next->next != NULL) {
@@ -133,7 +133,7 @@ void Linkedlist::deleteFromEnd() {
 }
 
 // Deleting the node from the beginning of the list
-void Linkedlist::deleteFromBeginning() {
+void SinglyLinkedList::deleteFromBeginning() {
     Node* temp = head;
 
     if(head == NULL) {
@@ -146,7 +146,7 @@ void Linkedlist::deleteFromBeginning() {
 }
 
 // Delete node from the specific position from the list
-void Linkedlist::deleteFromPos(int  pos) {
+void SinglyLinkedList::deleteFromPos(int  pos) {
     Node* temp = head;
     if(pos == 1) {
         head = head->next;
@@ -180,7 +180,7 @@ void Linkedlist::deleteFromPos(int  pos) {
 }
 
 // Printing the list
-void Linkedlist::printList() {
+void SinglyLinkedList::printList() {
     Node* temp = head;
 
     if(head == NULL) {
@@ -197,7 +197,7 @@ void Linkedlist::printList() {
 
 // driver code
 int main() {
-    Linkedlist LL;
+    SinglyLinkedList LL;
     LL.insertAtEnd(1);
     LL.insertAtEnd(2);
     LL.insertAtEnd(3);
