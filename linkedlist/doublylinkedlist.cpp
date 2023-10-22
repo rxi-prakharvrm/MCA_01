@@ -91,20 +91,13 @@ void DoublyLinkedList::insertAtPos(int data, int pos) {
 
     Node* temp = head;
     int nodeCounter = 1;
-    int totalNodes = 1;
 
-    while(temp->next != NULL) {
-        temp = temp->next;
-        totalNodes++;
-    }
-
-    temp = head;
     while (nodeCounter < pos - 1 && temp != NULL) {
         temp = temp->next;
         nodeCounter++;
     }
 
-    if (temp == NULL || pos < 1 || pos > totalNodes + 1) {
+    if (temp == NULL || pos < 1) {
         cout << "Cannot add new node at this position" << endl;
         exit(0);
     }
@@ -147,7 +140,7 @@ int main() {
     DLL.insertAtBeginning(25);
 
     // Adding the nodes at the specific position of the doubly linked list
-    DLL.insertAtPos(50, 5);
+    DLL.insertAtPos(50, 4);
 
     // Printing the list
     DLL.printList();
