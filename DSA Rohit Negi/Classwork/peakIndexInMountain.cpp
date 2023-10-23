@@ -2,22 +2,23 @@
 using namespace std;
 
 int main() {
-    int arr[] = {3, 4, 5, 10, 11, 12, 13, 20, 1, 2};
+    int arr[] = {0, 2, 1, 0};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int start = 0;
-    int end = n-1;
-    int mid, ans = 0;
+    int start = 0, end = n-1;
+    int mid, ans = -1;
 
     while(start <= end) {
-        mid = start + (end - start) / 2;
-        if(arr[mid] > arr[0]) {
-            ans = arr[mid];
-            start = mid + 1;
-        } else {
+        mid = end + (start - end) / 2;
+        if(arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1]) {
+            ans = mid;
+            cout << ans << endl;
+            exit(0);
+        } else if(arr[mid] < arr[mid-1]) {
             end = mid - 1;
+        } else {
+            start = mid + 1;
         }
     }
 
-    cout << ans << endl;
     return 0;
 }
