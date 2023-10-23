@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// Node class
 class Node {
     public:
     int data;
@@ -14,6 +15,7 @@ class Node {
     }
 };
 
+// Main class of double linked list that accumulates all the functions
 class DoublyLinkedList {
     Node* head;
 
