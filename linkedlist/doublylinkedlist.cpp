@@ -34,6 +34,9 @@ class DoublyLinkedList {
     // delete node from the end of the list
     void deleteFromEnd();
 
+    // delete node from the beginning of the list
+    void deleteFromBeginning();
+
     // print the list
     void printList();
 };
@@ -136,6 +139,25 @@ void DoublyLinkedList::deleteFromEnd() {
     temp->next = NULL;
 }
 
+// Deleting node from the beginning of the list
+void DoublyLinkedList::deleteFromBeginning() {
+    if(head == NULL) {
+        cout << "Can't delete, list is empty!" << endl;
+        exit(0);
+    }
+
+    Node* temp = head;
+    if(temp->next == NULL) {
+        delete temp;
+        head = NULL;
+        return;
+    }
+
+    head = head->next;
+    delete head->prev;
+    head->prev = NULL;
+}
+
 // Printing the doubly linked list
 void DoublyLinkedList::printList() {
     if(head == NULL) {
@@ -169,6 +191,10 @@ int main() {
 
     // Delete node from the end of the list
     DLL.deleteFromEnd();
+
+    // Delete node from the beginning of the list
+    DLL.deleteFromBeginning();
+    DLL.deleteFromBeginning();
 
     // Printing the list
     DLL.printList();
