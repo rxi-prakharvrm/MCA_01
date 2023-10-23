@@ -31,6 +31,9 @@ class DoublyLinkedList {
     // add node at the specific position in the list
     void insertAtPos(int, int);
 
+    // delete node from the end of the list
+    void deleteFromEnd();
+
     // print the list
     void printList();
 };
@@ -111,6 +114,28 @@ void DoublyLinkedList::insertAtPos(int data, int pos) {
     }
 }
 
+// Deleting from the ene of the list
+void DoublyLinkedList::deleteFromEnd() {
+    if(head == NULL) {
+        cout << "Empty list! Can't delete node" << endl;
+        exit(0);
+    }
+
+    Node* temp = head;
+    if(temp->next == NULL) {
+        delete temp;
+        head = NULL;
+        return;
+    }
+
+    while(temp->next->next != NULL) {
+        temp = temp->next;
+    }
+
+    delete temp->next;
+    temp->next = NULL;
+}
+
 // Printing the doubly linked list
 void DoublyLinkedList::printList() {
     if(head == NULL) {
@@ -141,6 +166,9 @@ int main() {
 
     // Adding the nodes at the specific position of the doubly linked list
     DLL.insertAtPos(50, 4);
+
+    // Delete node from the end of the list
+    DLL.deleteFromEnd();
 
     // Printing the list
     DLL.printList();
