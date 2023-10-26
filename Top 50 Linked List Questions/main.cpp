@@ -8,14 +8,18 @@ int main() {
 
     // insert the node in the list
     LL.insertAtEnd(1);
-    LL.insertAtEnd(21);
-    LL.insertAtEnd(30);
+    LL.insertAtEnd(2);
+    LL.insertAtEnd(3);
     LL.insertAtEnd(4);
+    LL.insertAtEnd(5);
 
     // getting the middleValue in the linked list
-    LL.middleElement();
+    // LL.middleElement();
+
+    // reverse the list
+    LL.reverseList();
 
     // print the list
-    // LL.printList();
+    LL.printList();
     return 0;
 }
