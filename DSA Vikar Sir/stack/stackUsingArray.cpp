@@ -7,8 +7,10 @@ class Stack {
     int top = -1;
     int n = 100;
 
+    int* ptr = (int *) malloc (n*sizeof(int));
+
     // dynamic memory allocation of size n with each of size int
-    int* ptr = (int *) calloc (n, sizeof(int));
+    // int* ptr = (int *) calloc (n, sizeof(int));
 
     // checking if the stack is empty or not
     bool isEmpty() {

@@ -16,8 +16,11 @@ class LinkedList {
     // finding the middle element in the list
     void middleElement();
 
-    // reverse the list
-    void reverseList();
+    // reverse singly linked list
+    void reverseSinglyList();
+
+    // reverse doubly linked list
+    void reverseDoublyList();
 };
 
 // insert the node at the end of the list
@@ -37,7 +40,8 @@ void LinkedList::insertAtEnd(int data) {
     temp->next = newNode;
 }
 
-// finding the middle element in the list
+// Que: 1. Find the middle element in the singly linked list
+
 // ************** BRUTE FORCE APPROACH ***************
 // void LinkedList::middleElement() {
 //     int middleValue, count = 0, itr = 1, middleIndex;
@@ -70,7 +74,8 @@ void LinkedList::insertAtEnd(int data) {
 //     }
 // }
 
-// Finding the middle element in the list
+// Que: 1. Find the middle element in the singly linked list
+
 // ************ OPTIMISED APPROACH *************
 void LinkedList::middleElement() {
     int middleValue;
@@ -89,8 +94,8 @@ void LinkedList::middleElement() {
     }
 }
 
-// reverse the list
-void LinkedList::reverseList() {
+// Que: 2. Reverse the singly linked list
+void LinkedList::reverseSinglyList() {
     Node* prev = head;
     Node* curr = head;
     Node* next = head;
@@ -104,6 +109,11 @@ void LinkedList::reverseList() {
 
     head->next = NULL;
     head = prev;
+}
+
+// Que: 3. Reverse the doubly linked list
+void LinkedList::reverseDoublyList() {
+    
 }
 
 // printing the list
