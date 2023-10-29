@@ -165,7 +165,7 @@ void SinglyLinkedList::deleteFromPos(int  pos) {
     }
 
     if(head == NULL || pos < 1 || pos > countNode) {
-        cout << "Can't delete from this position" << endl;
+        cout << "Can't add at this position" << endl;
         exit(0);
     }
 
@@ -212,7 +212,7 @@ int main() {
 
     // LL.deleteFromBeginning();
 
-    LL.deleteFromPos(5);
+    LL.deleteFromPos(1);
 
     LL.printList();
     return 0;
