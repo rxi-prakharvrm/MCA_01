@@ -7,6 +7,10 @@ int tripletSum(vector<T> &arr, int n, T target) {
     // Sort the array
     sort(arr.begin(), arr.end());
 
+    for(int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
     // Calculating triplet sum
     for(int i = 0; i < n-2; i++) {
         int ans = target - arr[i];
