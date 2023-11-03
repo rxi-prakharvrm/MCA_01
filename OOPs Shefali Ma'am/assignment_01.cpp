@@ -177,11 +177,11 @@ int main() {
     // pattern06();
 
     // Count the number of spaces, letters, special characters and numbers
-    // string str = "CPP is a superset of C";
+    string str = "CPP is a superset of C";
     // countNumsCharsLettersSpaces(str);
 
     // Reverse the string
-    // reverseString(str, 0, str.length()-1);
-    // cout << str << endl;
+    reverseString(str, 0, str.length()-1);
+    cout << str << endl;
     return 0;
 }

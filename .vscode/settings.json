@@ -7,7 +7,9 @@
         "xutility": "cpp",
         "iostream": "cpp",
         "vector": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "regex": "cpp",
+        "xlocale": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

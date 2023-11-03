@@ -1,0 +1,8 @@
+1. Find the smallest element in array
+2. Sort an array
+3. Number of occurrence of each number in sorted array
+4. Find third largest string in an array of strings
+5. Product and Sum of element in array
+6. Reverse string in an array of strings
+7. Find duplication in array
+8. Reverse a string
