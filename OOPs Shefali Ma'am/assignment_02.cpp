@@ -1,7 +1,5 @@
 #include <iostream>
-#include <climits>
 #include <string>
-#include <bits/stdc++.h>
 using namespace std;
 
 // Que: 1. Find the smallest element in array
@@ -29,10 +27,9 @@ class Sort {
 };
 
 // Que: 3. Number of occurrence of each number in sorted array
-vector<int> occurrencesInSortedArray() {
+void occurrencesInSortedArray() {
     int arr[] = {1, 1, 2, 2, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8};
     int n = sizeof(arr) / sizeof(arr[0]);
-    vector<int> occurrenceArray;
     int presentElement = arr[0];
     int occurrenceCounter = 1;
 
@@ -41,27 +38,26 @@ vector<int> occurrencesInSortedArray() {
             occurrenceCounter++;
         } else {
             presentElement = arr[i];
-            occurrenceArray.push_back(occurrenceCounter);
+            cout << occurrenceCounter << " ";
             occurrenceCounter = 1;
         }
     }
-
-    return occurrenceArray;
 }
 
 // Que: 4. Find third largest string in an array of strings
-int longestStringInArray() {
-    string animals[] = {"Zebra", "Elephant", "Hippopotomus", "Lion"};
-    int n = sizeof(animals) / sizeof(animals[0]);
-    int longestStringSize = 0;
 
-    for(int i = 0; i < n; i++) {
-        if(animals[i].size() > longestStringSize) {
-            longestStringSize = animals[i].size();
+
+// Que: 4. Find third largest string in an array of strings
+string longestStringInArray(string animals[], int n) {
+    for(int i = 0; i < n-1; i++) {
+        for(int j = i+1; j < n; j++) {
+            if(animals[i].size() < animals[j].size()) {
+                swap(animals[i], animals[j]);
+            }
         }
     }
 
-    return longestStringSize;
+    return animals[2];
 }
 
 // Que: 5. Product and Sum of element in array
@@ -135,13 +131,12 @@ int main() {
     // cout << smallestElementInArray() << endl;
 
     // Number of occurrence of each element in array ============================================
-    // vector<int> occurrenceArray = occurrencesInSortedArray();
-    // for(int i = 0; i < occurrenceArray.size(); i++) {
-    //     cout << occurrenceArray[i] << " ";
-    // }
+    // occurrencesInSortedArray();
 
     // longest size string in the array of strings ==============================================
-    // cout << "Longest string is of length: " << longestStringInArray() << endl;
+    string animals[] = {"Zebra", "Elephant", "Hippopotomus", "Lion", "Pegion", "Ant"};
+    int n = sizeof(animals) / sizeof(animals[0]);
+    cout << "Longest string is: " << longestStringInArray(animals, n) << endl;
 
     // Product and Sum of the element of an array ===============================================
     // productAndSum PS;
@@ -163,9 +158,9 @@ int main() {
     // duplicateElementsInArray(arr, n);
 
     // Reverse a string
-    string str = "Encapsulation";
-    reverseString(str, 0, str.size()-1);
-    cout << str << endl;
+    // string str = "Encapsulation";
+    // reverseString(str, 0, str.size()-1);
+    // cout << str << endl;
 
     return 0;
 }
