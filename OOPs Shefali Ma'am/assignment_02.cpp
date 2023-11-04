@@ -20,6 +20,15 @@ class Sort {
     public:
 
     // selection sort
+    void selectionSort(int arr[], int n) {
+        for(int i = 0; i < n-1; i++) {
+            for(int j = i+1; j < n; j++) {
+                if(arr[i] > arr[j]) {
+                    swap(arr[i], arr[j]);
+                }
+            }
+        }
+    }
     // insertion sort
     // bubble sort
     // merge sort
@@ -43,9 +52,6 @@ void occurrencesInSortedArray() {
         }
     }
 }
-
-// Que: 4. Find third largest string in an array of strings
-
 
 // Que: 4. Find third largest string in an array of strings
 string longestStringInArray(string animals[], int n) {
@@ -127,23 +133,29 @@ void reverseString(string &str, int start, int end) {
 
 
 int main() {
-    // smallest element in array ================================================================
-    // cout << smallestElementInArray() << endl;
+    // smallest element in array ===================================================
+    cout << smallestElementInArray() << endl;
 
-    // Number of occurrence of each element in array ============================================
-    // occurrencesInSortedArray();
+    // selection sort ==============================================================
+    int arr[] = {6, 2, 4, 5, 8, 8, 9, 9, 3, 0, 0, 1, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    Sort s;
+    s.selectionSort(arr, n);
 
-    // longest size string in the array of strings ==============================================
+    // Number of occurrence of each element in array ===============================
+    occurrencesInSortedArray();
+
+    // longest size string in the array of strings =================================
     string animals[] = {"Zebra", "Elephant", "Hippopotomus", "Lion", "Pegion", "Ant"};
     int n = sizeof(animals) / sizeof(animals[0]);
     cout << "Longest string is: " << longestStringInArray(animals, n) << endl;
 
-    // Product and Sum of the element of an array ===============================================
+    // Product and Sum of the element of an array ==================================
     // productAndSum PS;
     // cout << "Product of elements of the array is: " << PS.product() << endl;
     // cout << "Sum of elements of the array is: " << PS.sum() << endl;
 
-    // Reverse the string in an array of strings ================================================
+    // Reverse the string in an array of strings ===================================
     // string animals[] = {"Zebra", "Elephant", "Hippopotomus", "Lion"};
     // int n = sizeof(animals) / sizeof(animals[0]);
     // reverseStringInArray(animals, n);
@@ -152,7 +164,7 @@ int main() {
     //     cout << animals[i] << " ";
     // }
 
-    // Duplicate Elements in array ==============================================================
+    // Duplicate Elements in array =================================================
     // int arr[] = {6, 2, 4, 5, 8, 8, 9, 9, 3, 0, 0, 1, 5};
     // int n = sizeof(arr) / sizeof(arr[0]);
     // duplicateElementsInArray(arr, n);
