@@ -2,6 +2,46 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// ================================= Pseudo Code ===================================
+
+// function consecutivePair(stack stk):
+//     create a copy of stack stk and store it in reserveStk
+//     create a new stack called newStk
+//     initialize counter to 0
+
+//     # Count the number of elements in the original stack
+//     while stk is not empty:
+//         pop an element from stk
+//         increment counter by 1
+
+//     # Restore the original stack
+//     stk = reserveStk
+
+//     # If the number of elements is odd, remove the top element
+//     if counter is not even:
+//         pop the top element from stk
+
+//     # Compare consecutive pairs in the stack
+//     while stk is not empty:
+//         push the top element of stk onto newStk
+//         pop the top element from stk
+
+//         # Check if the pair is consecutive (differ by 1)
+//         if newStk.top() is equal to (stk.top() + 1) or newStk.top() is equal to (stk.top() - 1):
+//             push stk.top() onto newStk
+//             pop the top element from stk
+//             pop the top element from newStk
+//             pop the top element from newStk
+//         else:
+//             return False
+
+//     # If all consecutive pairs are found and removed, newStk should be empty
+//     if newStk is empty:
+//         return True
+//     else:
+//         return False
+
+
 bool consecutivePair(stack<int> &stk) {
     stack<int> reserveStk = stk;
     stack<int> newStk;
