@@ -40,15 +40,15 @@ void occurrencesInSortedArray() {
     int arr[] = {1, 1, 2, 2, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8};
     int n = sizeof(arr) / sizeof(arr[0]);
     int presentElement = arr[0];
-    int occurrenceCounter = 1;
+    int occurrence = 1;
 
     for(int i = 1; i <= n; i++) {
         if(arr[i] == presentElement) {
-            occurrenceCounter++;
+            occurrence++;
         } else {
             presentElement = arr[i];
-            cout << occurrenceCounter << " ";
-            occurrenceCounter = 1;
+            cout << occurrence << " ";
+            occurrence = 1;
         }
     }
 }
