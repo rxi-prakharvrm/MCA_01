@@ -4,11 +4,11 @@ using namespace std;
 
 // Function to convert a decimal number to its equivalent binary
 int decimalToBinary(int n) {
-    int lastDigit = 0, binaryNumber = 0, exponent = 0;
+    int rem = 0, binaryNumber = 0, exponent = 0;
 
     while(n > 0) {
-        lastDigit = n % 2;
-        binaryNumber += lastDigit * pow(10, exponent);
+        rem = n % 2;
+        binaryNumber += rem * pow(10, exponent);
         n /= 2;
         exponent++;
     }
