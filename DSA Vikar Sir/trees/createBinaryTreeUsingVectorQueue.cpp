@@ -69,13 +69,68 @@ void postOrderTraversal(Node *p) {
     }
 }
 
+int countNodes(Node *p) {
+    if(p != NULL)
+        return countNodes(p->left) + countNodes(p->right) + 1;
+    return 0;
+}
+
+int countTwoChildrenNodes(Node *p) {
+    if(p == NULL)
+        return 0;
+    if(p->left != NULL && p->right != NULL)
+        return countTwoChildrenNodes(p->left) + countTwoChildrenNodes(p->right) + 1;
+    else
+        return countTwoChildrenNodes(p->left) + countTwoChildrenNodes(p->right);
+}
+
+int countInternalNodes(Node *p) {
+    if(p == NULL)
+        return 0;
+    if(p->left != NULL || p->right != NULL)
+        return countInternalNodes(p->left) + countInternalNodes(p->right) + 1;
+    else
+        return countInternalNodes(p->left) + countInternalNodes(p->right);
+}
+
+int countExternalNodes(Node *p) {
+    if(p == NULL)
+        return 0;
+    if(p->left == NULL && p->right == NULL)
+        return countExternalNodes(p->left) + countExternalNodes(p->right) + 1;
+    else
+        return countExternalNodes(p->left) + countExternalNodes(p->right);
+}
+
+int heightOfTree(Node *p) {
+    int x, y;
+    if(p != NULL) {
+        x = heightOfTree(p->left);
+        y = heightOfTree(p->right);
+        return (x > y) ? x+1 : y+1;
+    }
+    return 0;
+}
+
 int main() {
     create();
 
     cout << endl;
+
     cout << "Pre: "; preOrderTraversal(root); cout << endl;
     cout << "In: "; inOrderTraversal(root); cout << endl;
     cout << "Post: "; postOrderTraversal(root); cout << endl;
+
+    cout << endl;
+
+    cout << "Total number of nodes: " << countNodes(root) << endl;
+    cout << "Nodes having two children are: " << countTwoChildrenNodes(root) << endl;
+    cout << "Internal nodes: " << countInternalNodes(root) << endl;
+    cout << "External nodes: " << countExternalNodes(root) << endl;
+
+    cout << endl;
+
+    cout << "Height of the tree is: " << heightOfTree(root) << endl;
 
     return 0;
 }
