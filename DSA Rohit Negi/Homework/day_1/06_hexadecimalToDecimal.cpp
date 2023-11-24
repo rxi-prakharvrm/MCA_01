@@ -30,7 +30,7 @@ int hexToDecimal(string hex) {
 }
 
 int main() {
-    string hex = "1F";
+    string hex = "2e7f";
     int decimal = hexToDecimal(hex);
     cout << "Decimal equivalent of hexadecimal number " << hex << " is: " << decimal << endl;
     return 0;

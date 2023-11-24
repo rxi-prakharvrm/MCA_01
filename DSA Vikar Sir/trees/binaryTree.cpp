@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Node {
@@ -14,61 +15,67 @@ class Node {
     }
 };
 
-class Tree {
-    Node* root;
-    public:
+Node *root;
 
-    Tree() : root(NULL) {}
-
-    void addLeftNode(int item) {
-        Node* leftNode = new Node(item);
-        if(root == NULL) {
-            root = leftNode;
-        } else {
-            Node* temp = root;
-            while(temp->left != NULL) {
-                temp = temp->left;
-            }
-            temp->left = leftNode;
+void create() {
+    Node *p, *t;
+    int x;
+    queue<Node*> q;
+    cout << "Enter root value: ";
+    cin >> x;
+    root = new Node(x);
+    q.push(root);
+    while(!q.empty()) {
+        p = q.front();
+        q.pop();
+        cout << "Enter left child: ";
+        cin >> x;
+        if(x != -1) {
+            t = new Node(x);
+            p->left = t;
+            q.push(t);
+        }
+        cout << "Enter right child: ";
+        cin >> x;
+        if(x != -1) {
+            t = new Node(x);
+            p->right = t;
+            q.push(t);
         }
     }
+}
 
-    void addRightNode(int item) {
-        Node* rightNode = new Node(item);
-        if(root == NULL) {
-            root = rightNode;
-        } else {
-            Node* temp = root;
-            while(temp->right != NULL) {
-                temp = temp->right;
-            }
-            temp->right = rightNode;
-        }
+void preOrderTraversal(Node *p) {
+    if(p != NULL) {
+        cout << p->data << " ";
+        preOrderTraversal(p->left);
+        preOrderTraversal(p->right);
     }
+}
 
-    void preOrderTraversal() {
-        if(root == NULL) {
-            cout << "Empty Tree!" << endl;
-            return;
-        } else {
-            Node* temp = root;
-            while(temp != NULL) {
-                cout << temp->data << " ";
-                temp = temp->left;
-            }
-        }
+void inOrderTraversal(Node *p) {
+    if(p != NULL) {
+        inOrderTraversal(p->left);
+        cout << p->data << " ";
+        inOrderTraversal(p->right);
     }
-};
+}
+
+void postOrderTraversal(Node *p) {
+    if(p != NULL) {
+        postOrderTraversal(p->left);
+        postOrderTraversal(p->right);
+        cout << p->data << " ";
+    }
+}
 
 int main() {
-    Tree t;
-    t.addLeftNode(1);
-    t.addLeftNode(2);
-    t.addLeftNode(4);
-    t.addRightNode(5);
-    t.addRightNode(3);
-    t.addLeftNode(6);
-    t.addRightNode(7);
-    
+    create();
+
+    cout << endl;
+    cout << "Pre: "; preOrderTraversal(root); cout << endl;
+    cout << "In: "; inOrderTraversal(root); cout << endl;
+    cout << "Post: "; postOrderTraversal(root); cout << endl;
+
     return 0;
 }
