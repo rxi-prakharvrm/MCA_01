@@ -15,9 +15,7 @@ class Node {
     }
 };
 
-Node *root;
-
-void create() {
+void create(Node *&root) {
     Node *p, *t;
     int x;
     queue<Node*> q;
@@ -113,7 +111,8 @@ int heightOfTree(Node *p) {
 }
 
 int main() {
-    create();
+    Node *root;
+    create(root);
 
     cout << endl;
 
