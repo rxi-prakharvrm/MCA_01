@@ -40,6 +40,21 @@ class Stack {
         }
     }
 
+    int size() {
+        int count = 0;
+        if(top == NULL) {
+            cout << "Stack is empty!" << endl;
+            return 0;
+        } else {
+            Node* temp = top;
+            while(temp != NULL) {
+                count++;
+                temp = temp->next;
+            }
+        }
+        return count;
+    }
+
     void display() {
         if(top == NULL) {
             cout << "Nothing to display!" << endl;
@@ -67,5 +82,7 @@ int main() {
     stk.pop();
 
     stk.display();
+
+    cout << "Size of the stack is: " << stk.size() << endl;
     return 0;
 }
