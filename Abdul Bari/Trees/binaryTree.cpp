@@ -13,7 +13,7 @@ class Node {
 
 class Solution {
     public:
-    void create(Node *&root) {
+    void createLevelOrder(Node *&root) {
         Node *currentNode, *newNode;
         int x;
         queue<Node *> q;
@@ -21,42 +21,82 @@ class Solution {
         cout << "Enter root value: ";
         cin >> x;
 
-        root = (Node *) malloc(sizeof(Node));
-        root->data = x;
-        root->left = NULL;
-        root->right = NULL;
-
+        root = new Node(x);
         q.push(root);
 
         while(!q.empty()) {
             currentNode = q.front();
             q.pop();
 
-            cout << "Enter left child: ";
+            cout << "Enter left child of " << currentNode->data << ": ";
             cin >> x;
 
             if(x != -1) {
-                newNode = (Node *) malloc(sizeof(Node));
-                newNode->data = x;
-                newNode->left = NULL;
-                newNode->right = NULL;
+                newNode = new Node(x);
                 currentNode->left = newNode;
                 q.push(newNode);
             }
 
-            cout << "Enter right child: ";
+            cout << "Enter right child of " << currentNode->data << ": ";
             cin >> x;
 
             if(x != -1) {
-                newNode = (Node *) malloc(sizeof(Node));
-                newNode->data = x;
-                newNode->left = NULL;
-                newNode->right = NULL;
+                newNode = new Node(x);
                 currentNode->right = newNode;
                 q.push(newNode);
             }
         }
 
+    }
+
+    void createPreOrder(Node *&node, int x) {
+        cout << "Enter value of left child of " << node->data << ": ";
+        cin >> x;
+        if(x != -1) {
+            Node *newNode = new Node(x);
+            node->left = newNode;
+            createPreOrder(node->left, x);
+        }
+        cout << "Enter value of right child of " << node->data << ": ";
+        cin >> x;
+        if(x != -1) {
+            Node *newNode = new Node(x);
+            node->right = newNode;
+            createPreOrder(node->right, x);
+        }
+    }
+
+    void createPreOrder(Node *&root) {
+        int x;
+        cout << "Enter root value: ";
+        cin >> x;
+        root = new Node(x);
+        createPreOrder(root, x);
+    }
+
+    void createPostOrder(Node *&node, int x) {
+        cout << "Enter value of right child of " << node->data << ": ";
+        cin >> x;
+        if(x != -1) {
+            Node *newNode = new Node(x);
+            node->right = newNode;
+            createPostOrder(node->right, x);
+        }
+        cout << "Enter value of left child of " << node->data << ": ";
+        cin >> x;
+        if(x != -1) {
+            Node *newNode = new Node(x);
+            node->left = newNode;
+            createPostOrder(node->left, x);
+        }
+    }
+
+    void createPostOrder(Node *&root) {
+        int x;
+        cout << "Enter root value: ";
+        cin >> x;
+        root = new Node(x);
+        createPostOrder(root, x);
     }
 
     void preOrder(Node *&root) {
@@ -135,7 +175,9 @@ class Solution {
 int main() {
     Node *root;
     Solution s;
-    s.create(root);
+    s.createLevelOrder(root);
+    // s.createPreOrder(root);
+    // s.createPostOrder(root);
 
     cout << endl;
     cout << "preOrder: "; s.preOrder(root);
@@ -145,11 +187,13 @@ int main() {
     cout << "postOrder: "; s.postOrder(root);
     cout << endl;
 
-    cout << endl << "Total number of nodes: " << s.countNodes(root) << endl;
-    cout << endl << "Total nodes having two children: " << s.countNodesHavingTwoChildren(root) << endl;
-    cout << endl << "Total nodes having one children: " << s.countNodesHavingOneChild(root) << endl;
-    cout << endl << "Total nodes having zero children: " << s.countNodesHavingNoChild(root) << endl;
-    cout << endl << "Sum of nodes: " << s.sumOfNodes(root) << endl;
-    cout << endl << "Number of levels in the tree: " << s.numberOfLevels(root) << endl;
+    cout << endl;
+    cout << "Total number of nodes: " << s.countNodes(root) << endl;
+    cout << "Total nodes having two children: " << s.countNodesHavingTwoChildren(root) << endl;
+    cout << "Total nodes having one children: " << s.countNodesHavingOneChild(root) << endl;
+    cout << "Total nodes having zero children: " << s.countNodesHavingNoChild(root) << endl;
+    cout << "Sum of nodes: " << s.sumOfNodes(root) << endl;
+    cout << "Number of levels in the tree: " << s.numberOfLevels(root) << endl;
+    cout << endl;
     return 0;
 }
