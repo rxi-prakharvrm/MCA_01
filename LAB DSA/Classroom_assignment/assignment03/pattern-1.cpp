@@ -2,11 +2,12 @@
 using namespace std;
 
 void pattern1() {
-    for(int row = 1; row <= 5; row++) {
-        for(int col = 5; col > row; col--) {
+    int row = 5;
+    for(int i = 1; i <= row; i++) {
+        for(int j = 5; j > i; j--) {
             cout << " ";
         }
-        for(int col = 1; col <= 2*row-1; col++) {
+        for(int j = 1; j <= 2*i-1; j++) {
             cout << "*";
         }
         cout << endl;
