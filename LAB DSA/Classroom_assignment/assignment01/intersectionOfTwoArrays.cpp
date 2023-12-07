@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> intersection(vector<int> arr1, vector<int> arr2, vector<int> &ans) {
+void intersection(vector<int> arr1, vector<int> arr2, vector<int> &ans) {
     for(int i = 0; i < arr1.size(); i++) {
         for(int j = 0; j < arr2.size(); j++) {
             if(arr1[i] == arr2[j]) {
@@ -11,7 +11,6 @@ vector<int> intersection(vector<int> arr1, vector<int> arr2, vector<int> &ans) {
             }
         }
     }
-    return ans;
 }
 
 int main() {

@@ -2,23 +2,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void removeDuplicates(int *arr, int &size) {
-
-    for(int i = 0; i < size; i++) {
-        cout << arr[i] << " ";
+vector<int> removeDuplicates(vector<int> arr, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for(int j = i+1; j < n; j++) {
+            if(arr[i] == arr[j]) {
+                arr[i] = -1;
+            }
+        }
     }
 
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == -1) {
+            arr.erase(arr.begin()+i);
+            i--;
+        }
+    }
+
+    return arr;
 }
 
 int main() {
-    int size;
+    int n;
     cout << "Enter the size of the array: ";
-    cin >> size;
-    int *p = (int *) malloc(sizeof(int) * size);
-    for(int i = 0; i < size; i++) {
-        cout << "Enter element " << i+1 << ": ";
-        cin >> p[i];
+    cin >> n;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++) {
+        cout << "Enter element " << i + 1 << ": ";
+        cin >> arr[i];
     }
-    removeDuplicates(p, size);
+    vector<int> res = removeDuplicates(arr, n);
+    for (int i = 0; i < res.size(); i++) {
+        cout << res[i] << " ";
+    }
     return 0;
 }
