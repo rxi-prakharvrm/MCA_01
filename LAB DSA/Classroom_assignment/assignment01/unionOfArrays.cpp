@@ -14,7 +14,7 @@ set<int> unionOfArrayElements(vector<int> arr1, vector<int> arr2, set<int> &ans)
 
 int main() {
     vector<int> arr1 = {1, 2, 2, 7, 3};
-    vector<int> arr2 = {2, 3, 9, 15};
+    vector<int> arr2 = {2, 2, 3, 9, 15};
     set<int> ans;
 
     unionOfArrayElements(arr1, arr2, ans);
