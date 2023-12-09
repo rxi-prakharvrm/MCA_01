@@ -3,6 +3,8 @@
 using namespace std;
 
 vector<int> removeDuplicates(vector<int> arr, int n) {
+
+    // store -1 at the place of more than one occurrences of a number
     for (int i = 0; i < n - 1; i++) {
         for(int j = i+1; j < n; j++) {
             if(arr[i] == arr[j]) {
@@ -11,6 +13,7 @@ vector<int> removeDuplicates(vector<int> arr, int n) {
         }
     }
 
+    // remove all the elements from the array with element -1 and reduce the size
     for(int i = 0; i < n; i++) {
         if(arr[i] == -1) {
             arr.erase(arr.begin()+i);

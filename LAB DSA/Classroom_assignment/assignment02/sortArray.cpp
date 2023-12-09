@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// sort the given arr in O(n^2) time complexity
 void sortArray(int *arr, int size) {
     for(int i = 0; i < size-1; i++) {
         for(int j = i+1; j < size; j++) {

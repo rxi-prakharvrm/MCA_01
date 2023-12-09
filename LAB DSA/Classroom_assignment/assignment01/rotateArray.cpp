@@ -1,15 +1,14 @@
 #include <iostream>
-#include <bits/stdc++.h>
 using namespace std;
 
 void rotateArray(int arr[], int n, int rotate) {
     for(int i = 0; i < rotate; i++) {
-        int temp = arr[n-1];
+        int temp = arr[n-1]; // store last element of arr
 
         for(int j = n-1; j >= 0; j--)
-            arr[j] = arr[j-1];
+            arr[j] = arr[j-1]; // replace all successive places with the current one
 
-        arr[0] = temp;
+        arr[0] = temp; // store the last element at the 0th index
     }
 }
 

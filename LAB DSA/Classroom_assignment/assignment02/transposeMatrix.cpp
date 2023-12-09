@@ -6,6 +6,9 @@ void transpose(vector<vector<int>> &matrix) {
     int rows = matrix.size();
     int cols = matrix[0].size();
 
+    // create a 2d array using vector
+    // number of rows = cols
+    // number of columns = rows
     vector<vector<int>> transMatrix(cols, vector<int>(rows, 0));
 
     for(int i = 0; i < matrix.size(); i++) {

@@ -1,6 +1,16 @@
 #include <iostream>
 using namespace std;
 
+/*
+
+######
+#    #
+#    #
+#    #
+######
+
+*/
+
 void pattern2() {
     int row = 5;
     for(int i = 1; i <= row; i++) {

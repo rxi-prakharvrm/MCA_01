@@ -1,9 +1,11 @@
 #include <iostream>
 using namespace std;
 
+// reverse array using recursion
 void reverseArray(int arr[], int start, int end) {
     if(start >= end) return;
 
+    // swaping the elements at start index and end index
     int temp = arr[start];
     arr[start] = arr[end];
     arr[end] = temp;

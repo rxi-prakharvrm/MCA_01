@@ -6,6 +6,9 @@ vector<vector<int>> addTwoMatrix(vector<vector<int>> m1, vector<vector<int>> m2)
     int rows = m1.size();
     int cols = m1[0].size();
 
+    // creating a 2d array using vector
+    // number of rows = rows
+    // number of columns = cols
     vector<vector<int>> ans(rows, vector<int>(cols, 0));
 
     for(int i = 0; i < m1.size(); i++) {

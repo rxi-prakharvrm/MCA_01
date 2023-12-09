@@ -2,6 +2,18 @@
 #include <math.h>
 using namespace std;
 
+/*
+
+    *
+   ***
+  *****
+ *******
+  *****
+   ***
+    *
+
+*/
+
 void pattern5() {
     int row = 7;
     for(int i = -3; i <= floor(row/2); i++) {
