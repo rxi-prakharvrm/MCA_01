@@ -182,7 +182,7 @@ def updateRecords():
         colValue = input("Enter column value: ")
         pkCol = cur.fetchone()[0]
         pkColValue = input(f"Enter the value of {pkCol} where you want to update {colName}: ")
-        selectQuery = f"SELECT id FROM {tname} WHERE id = {pkColValue}"
+        selectQuery = f"SELECT {pkCol} FROM {tname} WHERE {pkCol} = {pkColValue};"
         cur.execute(selectQuery)
         result = cur.fetchone()
 
@@ -211,7 +211,7 @@ def deleteRecords():
         cur.execute(query)
         pkCol = cur.fetchone()[0]
         pkColValue = input(f"{pkCol} = ")
-        selectQuery = f"SELECT id FROM {tname} WHERE id = {pkColValue}"
+        selectQuery = f"SELECT {pkCol} FROM {tname} WHERE {pkCol} = {pkColValue}"
         cur.execute(selectQuery)
         result = cur.fetchone()
 
