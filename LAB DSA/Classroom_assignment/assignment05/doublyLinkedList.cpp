@@ -31,13 +31,10 @@ class DoublyLinkedList {
     void traverseBackward();
 
     // add node at the end of the list
-    void insertAtEnd(int);
-
-    // add node at the beginning of the list
-    void insertAtBeginning(int);
+    void insertAtEnd();
 
     // add node at the specific position in the list
-    void insertAtPos(int, int);
+    void insertAfterKthPosition();
 
     // delete node from the end of the list
     void deleteFromEnd();
@@ -46,12 +43,15 @@ class DoublyLinkedList {
     void deleteFromBeginning();
 
     // deletion of the node for a given key
-    void deleteForKey(int);
+    void deleteForKey();
 };
 
 // Adding the data at the end of the list
-void DoublyLinkedList::insertAtEnd(int data) {
-    Node* newNode = new Node(data);
+void DoublyLinkedList::insertAtEnd() {
+    int value;
+    cout << "Enter the value that is to be inserted: ";
+    cin >> value;
+    Node* newNode = new Node(value);
 
     if (head == NULL) {
         head = newNode;
@@ -64,65 +64,64 @@ void DoublyLinkedList::insertAtEnd(int data) {
         temp->next = newNode;
         newNode->prev = temp;
     }
-}
-
-// Adding the node at the beginning of the doubly linked list
-void DoublyLinkedList::insertAtBeginning(int data) {
-    Node* newNode = new Node(data);
     
-    if(head == NULL) {
-        head = newNode;
-    } else {
-        Node* temp = head;
-
-        while(temp->next != NULL) {
-            temp = temp->next;
-        }
-
-        newNode->next = head;
-        head->prev = newNode;
-        head = newNode;
-    }
+    cout << "Data inserted successfully!" << endl << endl;
 }
 
 // Adding the node at a specific position in the list
-void DoublyLinkedList::insertAtPos(int data, int pos) {
-    Node* newNode = new Node(data);
+void DoublyLinkedList::insertAfterKthPosition() {
+    int value, k;
+    cout << "Enter the position after which you want to insert the value: ";
+    cin >> k;
+    cout << "Enter the value that is to be inserted: ";
+    cin >> value;
+    
+    Node* newNode = new Node(value);
 
-    if (pos == 1) {
+    int totalNodes = 0;
+    Node* temp = head;
+
+    while (temp != NULL) {
+        totalNodes++;
+        temp = temp->next;
+    }
+
+    // Check if k is out of bounds
+    if (k <= 0 || k > totalNodes) {
+        cout << "Invalid position." << endl;
+        return;
+    }
+
+    if (k == 1) {
+        newNode->next = head;
         if (head != NULL) {
-            newNode->next = head;
             head->prev = newNode;
         }
         head = newNode;
         return;
     }
 
-    if (head == NULL) {
-        cout << "Cannot add new node at this position" << endl;
-        return;
-    }
-
-    Node* temp = head;
+    temp = head;
     int nodeCounter = 1;
 
-    while (nodeCounter < pos - 1 && temp != NULL) {
+    while (nodeCounter < k && temp != NULL) {
         temp = temp->next;
         nodeCounter++;
     }
 
-    if (temp == NULL || pos < 1) {
-        cout << "Cannot add new node at this position" << endl;
-        exit(0);
+    if (temp == NULL) {
+        cout << "Invalid position." << endl;
+        return;
     }
 
     newNode->next = temp->next;
+    if (temp->next != NULL) {
+        temp->next->prev = newNode;
+    }
     temp->next = newNode;
     newNode->prev = temp;
-
-    if (newNode->next != NULL) {
-        newNode->next->prev = newNode;
-    }
+    
+    cout << "Data inserted successfully!" << endl << endl;
 }
 
 // Deleting from the ene of the list
@@ -145,6 +144,8 @@ void DoublyLinkedList::deleteFromEnd() {
 
     delete temp->next;
     temp->next = NULL;
+    
+    cout << "Data deleted successfully!" << endl << endl;
 }
 
 // Deleting node from the beginning of the list
@@ -164,6 +165,8 @@ void DoublyLinkedList::deleteFromBeginning() {
     head = head->next;
     delete head->prev;
     head->prev = NULL;
+    
+    cout << "Data deleted successfully!" << endl << endl;
 }
 
 // traversing forward in doubly linked list
@@ -178,7 +181,7 @@ void DoublyLinkedList::traverseForward() {
         cout << temp->data << "->";
         temp = temp->next;
     }
-    cout << "NULL" << endl;
+    cout << "NULL\n" << endl;
 }
 
 // traversing backward in doubly linked list
@@ -192,55 +195,86 @@ void DoublyLinkedList::traverseBackward() {
     while(temp->next != NULL) {
         temp = temp->next;
     }
-    head = temp;
-    temp = head;
+
     while(temp != NULL) {
         cout << temp->data << "->";
         temp = temp->prev;
     }
-    cout << "NULL" << endl;
+    cout << "NULL\n" << endl;
 }
 
 // Deletion of the node for a given key
-void DoublyLinkedList::deleteForKey(int key) {
+void DoublyLinkedList::deleteForKey() {
+    int key;
+    cout << "Enter the key you want to delete from the list: ";
+    cin >> key;
     Node *temp = head;
-    while(temp->data != key) {
+    while (temp != NULL && temp->data != key) {
         temp = temp->next;
     }
-    temp->prev->next = temp->next;
-    temp->next->prev = temp->prev;
+    if (temp == NULL) {
+        cout << "Key not found in the list\n" << endl;
+        return;
+    }
+    
+    if (temp->prev != NULL) {
+        temp->prev->next = temp->next;
+    }
+    if (temp->next != NULL) {
+        temp->next->prev = temp->prev;
+    }
+    
+    delete temp;
+
+    cout << "Data deleted successfully!" << endl << endl;
 }
+
 
 int main() {
     DoublyLinkedList DLL;
+    int choice = 0;
+    bool isContinue = true;
+    while(isContinue) {
+        cout << "1. Insert node at the end" << endl;
+        cout << "2. Insert node after kth position" << endl;
+        cout << "3. Delete node from the beginning" << endl;
+        cout << "4. Delete node from the end" << endl;
+        cout << "5. Delete node for a key" << endl;
+        cout << "6. Traverse forward" << endl;
+        cout << "7. Traverse backward" << endl;
+        cout << "8. Exit program" << endl;
+        
+        cout << endl << "Enter one choice: ";
+        cin >> choice;
 
-    // Adding the nodes at the endl of the doubly linked list
-    DLL.insertAtEnd(1);
-    DLL.insertAtEnd(2);
-    DLL.insertAtEnd(3);
-
-    // Adding the nodes at the beginning of the doubly linked list
-    DLL.insertAtBeginning(23);
-    DLL.insertAtBeginning(24);
-    DLL.insertAtBeginning(25);
-
-    // Adding the nodes at the specific position of the doubly linked list
-    DLL.insertAtPos(50, 4);
-
-    // Delete node from the end of the list
-    DLL.deleteFromEnd();
-
-    // Delete for a given key
-    DLL.deleteForKey(50);
-
-    // Delete node from the beginning of the list
-    DLL.deleteFromBeginning();
-    DLL.deleteFromBeginning();
-
-    // traverse backward
-    DLL.traverseForward();
-    
-    // traverse backward
-    DLL.traverseBackward();
+        switch(choice) {
+            case 1:
+                DLL.insertAtEnd();
+                break;
+            case 2:
+                DLL.insertAfterKthPosition();
+                break;
+            case 3:
+                DLL.deleteFromBeginning();
+                break;
+            case 4:
+                DLL.deleteFromEnd();
+                break;
+            case 5:
+                DLL.deleteForKey();
+                break;
+            case 6:
+                DLL.traverseForward();
+                break;
+            case 7:
+                DLL.traverseBackward();
+                break;
+            case 8:
+                isContinue = false;
+                break;
+            default:
+                cout << "Invalid choice, select again!" << endl << endl;
+        }
+    }
     return 0;
 }

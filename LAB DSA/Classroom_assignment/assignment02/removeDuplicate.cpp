@@ -33,7 +33,10 @@ int main() {
         cout << "Enter element " << i + 1 << ": ";
         cin >> arr[i];
     }
+
     vector<int> res = removeDuplicates(arr, n);
+
+    cout << "Array after deleting duplicate elements: " << endl;
     for (int i = 0; i < res.size(); i++) {
         cout << res[i] << " ";
     }

@@ -7,6 +7,7 @@ int main() {
     int left = 0, right = v[0].size()-1, top = 0, bottom = v.size()-1;
 
     // repeat traversing the elements until left <= right and top <= bottom
+    cout << "Traversal of the matrix in spiral form: " << endl;
     while(left <= right and top <= bottom) {
         
         // print elements left->right

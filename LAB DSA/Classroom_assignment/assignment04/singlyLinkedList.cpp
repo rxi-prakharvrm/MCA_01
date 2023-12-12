@@ -275,8 +275,6 @@ int main() {
         
         cout << endl << "Enter one choice: ";
         cin >> choice;
-        
-        int value, pos;
 
         switch(choice) {
             case 1:

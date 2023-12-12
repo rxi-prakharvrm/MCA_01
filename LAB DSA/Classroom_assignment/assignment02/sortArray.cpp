@@ -13,6 +13,7 @@ void sortArray(int *arr, int size) {
         }
     }
 
+    cout << "Sorted array: " << endl;
     for(int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }

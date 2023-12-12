@@ -19,6 +19,7 @@ int main() {
 
     rotateArray(arr, n, rotate);
 
+    cout << "Rotated array: " << endl;
     for(int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }

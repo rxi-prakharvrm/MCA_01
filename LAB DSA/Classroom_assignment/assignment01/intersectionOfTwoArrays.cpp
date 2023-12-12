@@ -39,6 +39,7 @@ int main() {
 
     intersection(arr1, arr2, ans);
 
+    cout << "Intersection array: " << endl;
     for(int i = 0; i < ans.size(); i++) {
         cout << ans[i] << " ";
     }
