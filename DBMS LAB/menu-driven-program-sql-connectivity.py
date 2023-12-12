@@ -159,9 +159,12 @@ def selectRecords():
         query = f"SELECT * FROM {tname};"
         cur.execute(query)
         rows = cur.fetchall()
-        print("\n")
-        for row in rows:
-            print(row)
+        if len(rows) == 0:
+            print("\n>>> Empty Set! <<<")
+        else:
+            print("\n")
+            for row in rows:
+                print(row)
         print("\n---------------------------------------")
     except:
         print("\n!!!!!!! SOME ERROR OCCURRED !!!!!!!")
@@ -228,6 +231,20 @@ def deleteRecords():
         print("\n---------------------------------------")
         conn.rollback()
 
+def dropDatabase():
+    try:
+        dbname = input("\nEnter database name: ")
+        query = f"DROP DATABASE {dbname};"
+        areYouSure = input("Are you sure?(yes/no): ")
+        if(areYouSure == "yes"):
+            cur.execute(query)
+        print("\n>>> Database deleted successfully! <<<")
+        print("\n---------------------------------------")
+    except:
+        print("\n!!!!!!! SOME ERROR OCCURRED !!!!!!!")
+        print("\n---------------------------------------")
+        conn.rollback()
+
 # Main program loop
 isContinue = True
 while isContinue:
@@ -247,7 +264,8 @@ while isContinue:
     print("9. Select Records")
     print("10. Update Records")
     print("11. Delete Records")
-    print("12. Exit Program")
+    print("12. Drop Database")
+    print("13. Exit Program")
 
     # Prompt user for choice
     choice = int(input("\nEnter your choice: "))
@@ -277,6 +295,8 @@ while isContinue:
     elif choice == 11:
         deleteRecords()
     elif choice == 12:
+        dropDatabase()
+    elif choice == 13:
         isContinue = False
     else:
         print("Invalid Choice!")
